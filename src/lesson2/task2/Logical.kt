@@ -1,4 +1,5 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson2.task2
 
 import lesson1.task1.sqr
@@ -17,7 +18,12 @@ fun pointInsideCircle(x: Double, y: Double, x0: Double, y0: Double, r: Double) =
  * Четырехзначное число назовем счастливым, если сумма первых двух ее цифр равна сумме двух последних.
  * Определить, счастливое ли заданное число, вернуть true, если это так.
  */
-fun isNumberHappy(number: Int): Boolean = TODO()
+fun isNumberHappy(number: Int): Boolean {
+    val string = number.toString()
+    val digits = string.map(Character::getNumericValue).toIntArray()
+    return if (digits[0] + digits[1] == digits[2] + digits[3]) true else return false
+}
+
 
 /**
  * Простая
@@ -35,7 +41,12 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = TODO()
  * Дан номер месяца (от 1 до 12 включительно) и год (положительный).
  * Вернуть число дней в этом месяце этого года по григорианскому календарю.
  */
-fun daysInMonth(month: Int, year: Int): Int = TODO()
+fun daysInMonth(month: Int, year: Int): Int {
+    fun isLeapYear (year: Int): Boolean {
+        if ((year % 4) == 0 && (year % 4000) != 0 && ((year % 100) != 0 || (year % 400) == 0))
+    }
+    if (isLeapYear(year))
+}
 
 /**
  * Средняя
