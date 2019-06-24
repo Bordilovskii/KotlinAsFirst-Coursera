@@ -2,6 +2,7 @@
 
 package lesson2.task2
 
+import kotlinx.html.I
 import lesson1.task1.sqr
 
 /**
@@ -41,11 +42,31 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = TODO()
  * Дан номер месяца (от 1 до 12 включительно) и год (положительный).
  * Вернуть число дней в этом месяце этого года по григорианскому календарю.
  */
+
 fun daysInMonth(month: Int, year: Int): Int {
-    fun isLeapYear (year: Int): Boolean {
-        if ((year % 4) == 0 && (year % 4000) != 0 && ((year % 100) != 0 || (year % 400) == 0))
+    var isLeap = 0
+    var days = 0
+    if ((year % 4) == 0 && (year % 4000) != 0 && ((year % 100) != 0 || (year % 400) == 0))
+    {
+        isLeap = 1
+    } else {
+        isLeap = 2
     }
-    if (isLeapYear(year))
+    if (isLeap == 2 && month == 2) {
+        days = 28
+        return days
+    } else {
+        if (month == 4 || month == 6 || month ==9 || month == 11) {
+            days = 30
+            return days
+        } else if (month == 2) {
+            days = 29
+        } else {
+            days = 31
+            return days
+        }
+    }
+return days
 }
 
 /**
@@ -57,6 +78,9 @@ fun daysInMonth(month: Int, year: Int): Int {
  */
 fun circleInside(x1: Double, y1: Double, r1: Double,
                  x2: Double, y2: Double, r2: Double): Boolean = TODO()
+// { if ((sqr(x1 - x2) + sqr(y1 - y2)) <= sqr(r1-r2)) return true else return false }
+
+
 
 /**
  * Средняя
