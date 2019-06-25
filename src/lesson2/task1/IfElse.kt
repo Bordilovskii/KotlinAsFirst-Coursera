@@ -65,7 +65,7 @@ fun ageDescription(age: Int): String {
     val string = age.toString()
     val digits = string.map(Character::getNumericValue).toIntArray()
     var agePhrase = ""
-    if (age<=10) {
+    if (age<=9) {
         when (digits[0]) {
             1 -> agePhrase = "$age год"
             2, 3, 4 -> {
@@ -76,7 +76,7 @@ fun ageDescription(age: Int): String {
             }
         }
     }
-    if (age>10 && age<20) {agePhrase = "$age лет"}
+    if (age>=10 && age<20) {agePhrase = "$age лет"}
     if (age>=110 && age<120) {agePhrase = "$age лет"}
 
     if (age>20 && age<100) {
