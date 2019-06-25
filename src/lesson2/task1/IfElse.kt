@@ -2,10 +2,7 @@
 package lesson2.task1
 
 import lesson1.task1.discriminant
-import kotlin.math.PI
-import kotlin.math.acos
-import kotlin.math.max
-import kotlin.math.sqrt
+import kotlin.math.*
 
 /**
  * Пример
@@ -68,7 +65,7 @@ fun ageDescription(age: Int): String {
     val string = age.toString()
     val digits = string.map(Character::getNumericValue).toIntArray()
     var agePhrase = ""
-    if (age<10) {
+    if (age<=10) {
         when (digits[0]) {
             1 -> agePhrase = "$age год"
             2, 3, 4 -> {
@@ -167,6 +164,46 @@ fun rookOrBishopThreatens(kingX: Int, kingY: Int,
 fun triangleKind(a: Double, b: Double, c: Double): Int {
     var kind = 3
     fun sqr(x: Double) = x*x
+    var maxSide = 0.0
+    var secondSide = 0.0
+    var thirdSide = 0.0
+    if ((a>b)&&(a>c)){
+        maxSide = a
+        secondSide = b
+        thirdSide = c
+    }
+    if ((b>a)&&(b>c)){
+        maxSide = b
+        secondSide = a
+        thirdSide = c
+    }
+    if ((c>a)&&(c>b)){
+        maxSide = c
+        secondSide = a
+        thirdSide = b
+    }
+    if ((a==b)||(a==c)||(b==c)) {
+        maxSide = a
+        secondSide = b
+        thirdSide = c
+    }
+
+    if ((a+b>c)&&(a+c>b)&&(b+c>a)&&(a>0)&&(b>0)&&(c>0)) {
+
+        if ((sqr(maxSide))<(sqr(secondSide)+sqr(thirdSide))) kind = 0
+        if ((sqr(maxSide))==(sqr(secondSide)+sqr(thirdSide))) kind = 1
+        if ((sqr(maxSide))>(sqr(secondSide)+sqr(thirdSide))) kind = 2
+    }
+    else
+    {
+        kind = -1
+    }
+    return kind
+}
+   /*
+   {
+    var kind = 3
+    fun sqr(x: Double) = x*x
     val angleOneExpression: Double = (sqr(a)+sqr(b)-sqr(c))/(2*a*b)
     val angleOne = acos(angleOneExpression)*180/ PI
     val angleTwoExpression: Double = (sqr(a)+sqr(c)-sqr(b))/(2*a*c)
@@ -178,7 +215,7 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
     if (isReal) {
         if ((angleOne>0.0 && angleOne<90.0)||(angleTwo>0.0 && angleTwo<90.0)||(angleThree>0.0 && angleThree<90.0)) kind = 0
         if (angleOne==90.0 || angleTwo==90.0 || angleThree==90.0) kind = 1
-        if ((angleOne>90.0 && angleOne<180.0)||(angleTwo>90.0 && angleTwo<180.0)||(angleThree>90.0 && angleThree<180.0)) kind = 2
+        if ((angleOne>90.0 && angleOne<=180.0)||(angleTwo>90.0 && angleTwo<=180.0)||(angleThree>90.0 && angleThree<=180.0)) kind = 2
     }
     else
         {
@@ -186,6 +223,8 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
         }
     return kind
 }
+    */
+
 
 /**
  * Средняя
