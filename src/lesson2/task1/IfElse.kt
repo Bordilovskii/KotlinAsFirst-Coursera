@@ -2,6 +2,8 @@
 package lesson2.task1
 
 import lesson1.task1.discriminant
+import kotlin.math.PI
+import kotlin.math.acos
 import kotlin.math.max
 import kotlin.math.sqrt
 
@@ -162,7 +164,28 @@ fun rookOrBishopThreatens(kingX: Int, kingY: Int,
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int {
+    var kind = 3
+    fun sqr(x: Double) = x*x
+    val angleOneExpression: Double = (sqr(a)+sqr(b)-sqr(c))/(2*a*b)
+    val angleOne = acos(angleOneExpression)*180/ PI
+    val angleTwoExpression: Double = (sqr(a)+sqr(c)-sqr(b))/(2*a*c)
+    val angleTwo = acos(angleTwoExpression)*180/ PI
+    val angleThreeExpression: Double = (sqr(b)+sqr(c)-sqr(a))/(2*b*c)
+    val angleThree = acos(angleThreeExpression)*180/ PI
+    val angleSum = angleOne + angleTwo + angleThree
+    val isReal = if (angleSum>0.0 && angleSum<=180.0) {true} else {false}
+    if (isReal) {
+        if ((angleOne>0.0 && angleOne<90.0)||(angleTwo>0.0 && angleTwo<90.0)||(angleThree>0.0 && angleThree<90.0)) kind = 0
+        if (angleOne==90.0 || angleTwo==90.0 || angleThree==90.0) kind = 1
+        if ((angleOne>90.0 && angleOne<180.0)||(angleTwo>90.0 && angleTwo<180.0)||(angleThree>90.0 && angleThree<180.0)) kind = 2
+    }
+    else
+        {
+            kind = -1
+        }
+    return kind
+}
 
 /**
  * Средняя
