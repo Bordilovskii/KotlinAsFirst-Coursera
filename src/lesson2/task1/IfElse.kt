@@ -76,7 +76,7 @@ fun ageDescription(age: Int): String {
             }
         }
     }
-    if (age>=10 && age<20) {agePhrase = "$age лет"}
+    if (age>=10 && age<=20) {agePhrase = "$age лет"}
     if (age>=110 && age<120) {agePhrase = "$age лет"}
 
     if (age>20 && age<100) {
@@ -167,26 +167,27 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
     var maxSide = 0.0
     var secondSide = 0.0
     var thirdSide = 0.0
-    if ((a>b)&&(a>c)){
+    if ((a>=b)&&(a>=c)){
         maxSide = a
         secondSide = b
         thirdSide = c
     }
-    if ((b>a)&&(b>c)){
+    if ((b>=a)&&(b>=c)){
         maxSide = b
         secondSide = a
         thirdSide = c
     }
-    if ((c>a)&&(c>b)){
+    if ((c>=a)&&(c>=b)){
         maxSide = c
         secondSide = a
         thirdSide = b
     }
-    if ((a==b)||(a==c)||(b==c)) {
+   /* if ((a==b)||(a==c)||(b==c)) {
         maxSide = a
         secondSide = b
         thirdSide = c
     }
+    */
 
     if ((a+b>c)&&(a+c>b)&&(b+c>a)&&(a>0)&&(b>0)&&(c>0)) {
 

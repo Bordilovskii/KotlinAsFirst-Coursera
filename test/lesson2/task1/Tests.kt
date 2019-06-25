@@ -36,6 +36,7 @@ class Tests {
     fun ageDescription() {
         assertEquals("1 год", ageDescription(1))
         assertEquals("10 лет", ageDescription(10))
+        assertEquals("20 лет", ageDescription(20))
         assertEquals("21 год", ageDescription(21))
         assertEquals("132 года", ageDescription(132))
         assertEquals("12 лет", ageDescription(12))
@@ -75,6 +76,7 @@ class Tests {
         assertEquals(-1, triangleKind(3.0, 7.5, 4.0))
         assertEquals(-1, triangleKind(0.0, 0.0, 0.0))
         assertEquals(2, triangleKind(0.5040474229510418, 0.18959810652518264, 0.33507679386360656))
+        assertEquals(2, triangleKind(0.1, 0.17355822349526295, 0.1))
         assertEquals(1, triangleKind(5.0, 3.0, 4.0))
         assertEquals(2, triangleKind(4.0, 6.0, 8.0))
         assertEquals(0, triangleKind(1.0, 1.5, 1.5))
