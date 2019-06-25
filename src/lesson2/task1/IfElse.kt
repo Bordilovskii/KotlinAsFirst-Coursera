@@ -62,7 +62,59 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String {
+    val string = age.toString()
+    val digits = string.map(Character::getNumericValue).toIntArray()
+    var agePhrase = ""
+    if (age<10) {
+        when (digits[0]) {
+            1 -> agePhrase = "$age год"
+            2, 3, 4 -> {
+                agePhrase = "$age года"
+            }
+            5, 6, 7, 8, 9, 0 -> {
+                agePhrase = "$age лет"
+            }
+        }
+    }
+    if (age>10 && age<20) {agePhrase = "$age лет"}
+    if (age>=110 && age<120) {agePhrase = "$age лет"}
+
+    if (age>20 && age<100) {
+        when (digits[1]) {
+            1 -> agePhrase = "$age год"
+            2, 3, 4 -> {
+                agePhrase = "$age года"
+            }
+            5, 6, 7, 8, 9, 0 -> {
+                agePhrase = "$age лет"
+            }
+        }
+    }
+    if (age>=100 && age<110) {
+        when (digits[2]) {
+            1 -> agePhrase = "$age год"
+            2, 3, 4 -> {
+                agePhrase = "$age года"
+            }
+            5, 6, 7, 8, 9, 0 -> {
+                agePhrase = "$age лет"
+            }
+        }
+    }
+    if (age>=120) {
+        when (digits[2]) {
+            1 -> agePhrase = "$age год"
+            2, 3, 4 -> {
+                agePhrase = "$age года"
+            }
+            5, 6, 7, 8, 9, 0 -> {
+                agePhrase = "$age лет"
+            }
+        }
+    }
+    return agePhrase
+}
 
 /**
  * Простая
