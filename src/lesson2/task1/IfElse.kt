@@ -124,7 +124,28 @@ fun ageDescription(age: Int): String {
  */
 fun timeForHalfWay(t1: Double, v1: Double,
                    t2: Double, v2: Double,
-                   t3: Double, v3: Double): Double = TODO()
+                   t3: Double, v3: Double): Double {
+    var firstHalf = 0.0
+   // if ((t1<0)||(t2<0)||(t3<0)||(v1<0)||(v2<0)||(v3<0)) firstHalf = 0.0
+    val s1 = t1*v1
+    val s2 = t2*v2
+    val s3 = t3*v3
+    var sTotal = s1 + s2 + s3
+    if (s1>=sTotal) {
+        firstHalf = (sTotal/v1)/2
+    } else {
+        if (s1+s2>=sTotal && s1<sTotal) {
+            firstHalf = (t1 + (sTotal-s1)/v2)/2
+        } else {
+            firstHalf = ((sTotal-s1-s2)/t3)/2
+        }
+    }
+  //  if s<=s1 then t:=s/t1
+  //  else if (s>s1)and(s<=s1+s2) then t:=t1+(s-s1)/v2
+  //  else t:=(s-s1-s2)/t3;
+    return firstHalf
+
+}
 
 /**
  * Простая
