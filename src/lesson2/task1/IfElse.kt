@@ -250,13 +250,20 @@ fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
     if ((d<a)) {
         return -1
     }
+  /*  if ((a<0)||(b<0)||(c<0)||(d<0)){
+        return -1
+    }
+   */
 
 // check if segments are the same
     if ((b - a) == (d - c)){
         segLength = b - a
     }
+    if ((b==c)||(b==d)||(a==b)||(c==d)){
+        return 0
+    }
 // check if ab is smaller than ad
-    if ((b>c)||(b<d)){
+    if ((b>c) || (b<d)){
         segLength = b - c
     }
 // check if ab has cd inside
@@ -264,11 +271,11 @@ fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
         segLength = d - c
     }
 // check if cd has ab inside
-    if ((c<a) && (d>b)) {
+    if ((a>c) && (b<d)) {
         segLength = b - a
     }
 // check if ad is inside cb
-    if ((c<a) && (d<b)) {
+    if ((a>c) && (b>d)) {
         segLength = d - a
     }
 

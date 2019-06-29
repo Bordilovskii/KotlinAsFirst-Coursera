@@ -87,6 +87,10 @@ class Tests {
     @Tag("Normal")
     fun segmentLength() {
         assertEquals(-1, segmentLength(1, 2, 3, 4))
+        assertEquals(-1, segmentLength(-1000000, 309654, 669187, 879273))
+        assertEquals(0, segmentLength(1, 1, 0, 1))
+        assertEquals(0, segmentLength(-999999, -999999, -1000000, -999999))
+        assertEquals(-1, segmentLength(5, 2, 5, 4))
         assertEquals(-1, segmentLength(5, 7, 1, 3))
         assertEquals(0, segmentLength(1, 2, 2, 4))
         assertEquals(3, segmentLength(3, 6, 0, 9))
