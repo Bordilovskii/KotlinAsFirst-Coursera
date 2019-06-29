@@ -228,30 +228,7 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
     }
     return kind
 }
-   /*
-   {
-    var kind = 3
-    fun sqr(x: Double) = x*x
-    val angleOneExpression: Double = (sqr(a)+sqr(b)-sqr(c))/(2*a*b)
-    val angleOne = acos(angleOneExpression)*180/ PI
-    val angleTwoExpression: Double = (sqr(a)+sqr(c)-sqr(b))/(2*a*c)
-    val angleTwo = acos(angleTwoExpression)*180/ PI
-    val angleThreeExpression: Double = (sqr(b)+sqr(c)-sqr(a))/(2*b*c)
-    val angleThree = acos(angleThreeExpression)*180/ PI
-    val angleSum = angleOne + angleTwo + angleThree
-    val isReal = if (angleSum>0.0 && angleSum<=180.0) {true} else {false}
-    if (isReal) {
-        if ((angleOne>0.0 && angleOne<90.0)||(angleTwo>0.0 && angleTwo<90.0)||(angleThree>0.0 && angleThree<90.0)) kind = 0
-        if (angleOne==90.0 || angleTwo==90.0 || angleThree==90.0) kind = 1
-        if ((angleOne>90.0 && angleOne<=180.0)||(angleTwo>90.0 && angleTwo<=180.0)||(angleThree>90.0 && angleThree<=180.0)) kind = 2
-    }
-    else
-        {
-            kind = -1
-        }
-    return kind
-}
-    */
+
 
 
 /**
@@ -262,4 +239,38 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
+
+    var segLength = 0
+
+// check intersection, if none, then return -1
+    if ((b<a)||(d<c)) {
+        return -1
+    }
+    if ((d<a)) {
+        return -1
+    }
+
+// check if segments are the same
+    if ((b - a) == (d - c)){
+        segLength = b - a
+    }
+// check if ab is smaller than ad
+    if ((b>c)||(b<d)){
+        segLength = b - c
+    }
+// check if ab has cd inside
+    if (b>d) {
+        segLength = d - c
+    }
+// check if cd has ab inside
+    if ((c<a) && (d>b)) {
+        segLength = b - a
+    }
+// check if ad is inside cb
+    if ((c<a) && (d<b)) {
+        segLength = d - a
+    }
+
+    return segLength
+}
